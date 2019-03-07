@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Puff, this is embarrassing</title>
+
+    <link rel='stylesheet' href='/webjars/github-com-hakger-lato-webfont/1.1.2/css/lato-webfont.min.css'>
+    <style>
+        body {
+            font-family: 'Lato', 'sans-serif';
+        }
+
+        h1 {
+            font-size: 3.5em;
+        }
+    </style>
+</head>
+<body>
+
+<img th:src="@{/images/gopher.svg}"
+     alt="gopher.svg"
+     style="height: 65vh; display: block; margin: auto; transform: translateY(5%);">
+
+<h1 th:text="${status + ' ' + error}" style="text-align: center; margin-top: 2em;"></h1>
+<p style="margin: 2em 2% 2em;" th:text="${trace}"></p>
+
+</body>
+</html>

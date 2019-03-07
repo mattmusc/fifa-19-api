@@ -1,0 +1,21 @@
+---
+- name: deploy war to developer vm
+  hosts: all
+  become: True
+
+  vars:
+    tomcat_version9: 9.0.14
+    tomcat_version: 9
+    wars:
+      - url: file:///vagrant/springykotlin.war
+
+  tasks:
+
+    - debug:
+        msg: "{{ hostvars[inventory_hostname].ansible_distribution }} \
+              {{ hostvars[inventory_hostname].ansible_distribution_version }}"
+
+  roles:
+    - robertdebock.java
+    - robertdebock.tomcat
+
