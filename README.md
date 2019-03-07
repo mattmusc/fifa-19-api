@@ -1,15 +1,15 @@
-# Webapp playgrounds
+# Fifa 19 API
 
-In this repository I'll share some common web-apps stack to practice with various technologies.
-
-The master branch has a plain Spring 5 MVC War webapp written in Kotlin. It has Swagger for documentation.
+Just an API to expose some data taken from Fifa 19 dataset from Kaggle.
 
 ## Tech stack
 
-- Spring MVC 5.x and Spring Web 5.x
+- Spring Boot
+- Hibernate 5.x
+- Jpa 2.1
+- MySQL 8
 - Kotlin
 - Swagger 2
-- Angular 7
 
 Author
 ---
