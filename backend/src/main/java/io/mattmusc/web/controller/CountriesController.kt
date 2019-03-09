@@ -42,13 +42,13 @@ open class CountriesController(private val countryService: CountryService)
 		log.debug("Retrieving country: {}", clubId)
 
 		val result = countryService.retrieveCountry(clubId.toLong())
-		if (result != null)
+		return if (result != null)
 		{
 			val resource = CountryResource.fromDto(result)
-			return ResponseEntity.ok(resource)
+			ResponseEntity.ok(resource)
 		} else
 		{
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
+			ResponseEntity.status(HttpStatus.NOT_FOUND).build()
 		}
 	}
 

@@ -47,15 +47,15 @@ class CountryDeserializer : JsonDeserializer<CountryResource?>()
 			p: JsonParser?,
 			ctxt: DeserializationContext?): CountryResource?
 	{
-		if (p != null && ctxt != null)
+		return if (p != null && ctxt != null)
 		{
 			val node: JsonNode = p.codec.readTree(p)
-			return CountryResource(
+			CountryResource(
 					name = node.get("name").asText(),
 					flagUrl = node.get("flag").asText())
 		} else
 		{
-			return null
+			null
 		}
 	}
 

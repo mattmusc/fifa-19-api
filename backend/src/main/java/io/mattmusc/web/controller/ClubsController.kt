@@ -4,7 +4,6 @@ import io.mattmusc.domain.club.api.ClubService
 import io.mattmusc.logger
 import io.mattmusc.web.CLUBS_PATH
 import io.mattmusc.web.resource.ClubResource
-import io.mattmusc.web.resource.PlayerResource
 import org.springframework.hateoas.Resources
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpStatus
@@ -43,13 +42,13 @@ open class ClubsController(private val clubService: ClubService)
 		log.debug("Retrieving club: {}", clubId)
 
 		val result = clubService.retrieveClub(clubId.toLong())
-		if (result != null)
+		return if (result != null)
 		{
 			val resource = ClubResource.fromDto(result)
-			return ResponseEntity.ok(resource)
+			ResponseEntity.ok(resource)
 		} else
 		{
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
+			ResponseEntity.status(HttpStatus.NOT_FOUND).build()
 		}
 	}
 }

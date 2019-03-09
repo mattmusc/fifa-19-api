@@ -47,15 +47,15 @@ class ClubDeserializer : JsonDeserializer<ClubResource?>()
 			p: JsonParser?,
 			ctxt: DeserializationContext?): ClubResource?
 	{
-		if (p != null && ctxt != null)
+		return if (p != null && ctxt != null)
 		{
 			val node: JsonNode = p.codec.readTree(p)
-			return ClubResource(
+			ClubResource(
 					name = node.get("name").asText(),
 					logoUrl = node.get("logo").asText())
 		} else
 		{
-			return null
+			null
 		}
 	}
 

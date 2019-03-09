@@ -1,4 +1,4 @@
-package io.mattmusc.domain.player;
+package io.mattmusc.domain.player
 
 import io.mattmusc.domain.country.api.CountryService
 import io.mattmusc.domain.country.api.dto.CreateCountryDto
@@ -36,8 +36,8 @@ open class PlayerIT(
 		Assertions.assertNotNull(addedCountry)
 		assertThat("The country has name '$countryName'", retrievedCountry?.name, equalTo(countryName))
 
-		val playerName = "Matteo";
-		val playerAge = 26;
+		val playerName = "Matteo"
+		val playerAge = 26
 		val addedPlayer = playerService.addPlayer(CreatePlayerDto(name = playerName, countryId = addedCountry.id, age = playerAge))
 		val retrievedPlayer = playerService.retrievePlayer(addedPlayer.id)
 
