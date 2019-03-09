@@ -24,7 +24,7 @@ internal data class CountryEntity(
 	companion object
 	{
 		fun fromDto(dto: CountryDto): CountryEntity =
-				CountryEntity(name = dto.name, flagUrl = dto.flagUrl)
+				CountryEntity(id = dto.id, name = dto.name, flagUrl = dto.flagUrl)
 
 		fun fromDto(dto: CreateCountryDto): CountryEntity =
 				CountryEntity(name = dto.name, flagUrl = dto.flagUrl)

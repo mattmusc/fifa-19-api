@@ -1,5 +1,6 @@
 package io.mattmusc.domain.player.service
 
+import io.mattmusc.domain.country.repository.CountryRepository
 import io.mattmusc.domain.player.api.PlayerService
 import io.mattmusc.domain.player.api.dto.CreatePlayerDto
 import io.mattmusc.domain.player.api.dto.PlayerDto
@@ -12,7 +13,10 @@ import javax.transaction.Transactional
 
 @Service
 @Transactional
-internal open class JpaPlayerService(private val playerRepo: PlayerRepository) : PlayerService
+internal open class JpaPlayerService(
+		private val playerRepo: PlayerRepository,
+		private val countryRepo: CountryRepository
+) : PlayerService
 {
 	private val log = LoggerFactory.getLogger(JpaPlayerService::class.java)
 
@@ -34,6 +38,11 @@ internal open class JpaPlayerService(private val playerRepo: PlayerRepository) :
 	{
 		log.debug("Adding a new player")
 		log.trace("New player data: $playerDto")
+
+		log.debug("Looking for a country with id: ${playerDto.countryId}")
+		val countryDto = countryRepo.findById(playerDto.countryId)
+		playerDto.country = countryDto.map { it.name }.orElse("")
+		log.trace("Updated PlayeDto: $playerDto")
 
 		return playerRepo.save(PlayerEntity.fromDto(playerDto)).toDto()
 	}

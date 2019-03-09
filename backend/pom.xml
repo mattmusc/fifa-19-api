@@ -117,6 +117,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+        </dependency>
+
         <!-- Swagger -->
 
         <dependency>
@@ -194,9 +200,18 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <!-- Spring Boot configures surefire by default, but not failsafe -->
+            <!-- Failsafe is used to run Integration tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*IT</include>
+                        <include>**/IT*</include>
+                        <include>**/*ITCase</include>
+                        <include>**/ITCase*</include>
+                    </includes>
+                </configuration>
             </plugin>
 
         </plugins>
