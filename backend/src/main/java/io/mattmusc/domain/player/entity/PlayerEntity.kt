@@ -3,7 +3,7 @@ package io.mattmusc.domain.player.entity
 import io.mattmusc.converters.player.DoubleAttributeConverter
 import io.mattmusc.converters.player.PlayerFootAttributeConverter
 import io.mattmusc.domain.club.entity.ClubEntity
-import io.mattmusc.domain.country.api.dto.CountryDto
+import io.mattmusc.domain.country.api.dto.CreateCountryDto
 import io.mattmusc.domain.country.entity.CountryEntity
 import io.mattmusc.domain.player.api.PlayerFoot
 import io.mattmusc.domain.player.api.dto.CreatePlayerDto
@@ -71,7 +71,7 @@ internal data class PlayerEntity(
 		fun fromDto(dto: CreatePlayerDto) = PlayerEntity(
 				name = dto.name,
 				age = dto.age,
-				countryEntity = CountryEntity.fromDto(CountryDto(name = dto.country))
+				countryEntity = CountryEntity.fromDto(CreateCountryDto(name = dto.country))
 		)
 
 		fun fromDto(dto: UpdatePlayerDto, savedPlayer: PlayerEntity) = PlayerEntity(

@@ -2,6 +2,9 @@ package io.mattmusc.domain.country.service
 
 import io.mattmusc.domain.country.api.CountryService
 import io.mattmusc.domain.country.api.dto.CountryDto
+import io.mattmusc.domain.country.api.dto.CreateCountryDto
+import io.mattmusc.domain.country.api.dto.UpdateCountryDto
+import io.mattmusc.domain.country.entity.CountryEntity
 import io.mattmusc.domain.country.repository.CountryRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
@@ -25,5 +28,23 @@ internal open class JpaCountryService(private val countryRepo: CountryRepository
 	{
 		log.debug("Retrieving clubs")
 		return countryRepo.findAll().map { it.toDto() }
+	}
+
+	override fun addCountry(countryDto: CreateCountryDto): CountryDto
+	{
+		log.debug("Adding a new country")
+		log.trace("New country data: $countryDto")
+
+		return countryRepo.save(CountryEntity.fromDto(countryDto)).toDto()
+	}
+
+	override fun updateCountry(id: Long, countryDto: UpdateCountryDto): CountryDto?
+	{
+		log.debug("Updating country with id: $id.")
+		log.trace("New country information to update: $countryDto")
+
+		return countryRepo.findById(id)
+				.map { countryRepo.save(CountryEntity.fromDto(countryDto, it)).toDto() }
+				.orElse(null)
 	}
 }

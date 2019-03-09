@@ -42,13 +42,13 @@ open class PlayersController(private val playerService: PlayerService)
 		log.debug("Retrieving player: {}", playerId)
 
 		val result = playerService.retrievePlayer(playerId.toLong())
-		if (result != null)
+		return if (result == null)
 		{
-			val resource = PlayerResource.fromDto(result)
-			return ResponseEntity.ok(resource)
+			ResponseEntity.status(HttpStatus.NOT_FOUND).build()
 		} else
 		{
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
+			val resource = PlayerResource.fromDto(result)
+			ResponseEntity.ok(resource)
 		}
 	}
 
@@ -70,13 +70,13 @@ open class PlayersController(private val playerService: PlayerService)
 		log.debug("Request to update player: {}", playerId)
 
 		val result = playerService.updatePlayer(playerId.toLong(), city)
-		if (result != null)
+		return if (result == null)
 		{
-			val resource = PlayerResource.fromDto(result)
-			return ResponseEntity.ok(resource)
+			ResponseEntity.status(HttpStatus.NOT_FOUND).build()
 		} else
 		{
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
+			val resource = PlayerResource.fromDto(result)
+			ResponseEntity.ok(resource)
 		}
 	}
 }
