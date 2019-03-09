@@ -5,12 +5,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <property dbms="oracle" value="false" name="autoIncrement"/>
-    <property dbms="mysql" value="true" name="autoIncrement"/>
+    <property dbms="oracle" name="autoIncrement" value="false"/>
+    <property dbms="mysql" name="autoIncrement" value="true"/>
 
-    <property name="now" value="sysdate" dbms="oracle"/>
-    <property name="now" value="now()" dbms="mysql"/>
-    <property name="now" value="now()" dbms="postgresql"/>
+    <property dbms="oracle" name="now" value="sysdate"/>
+    <property dbms="mysql" name="now" value="now()"/>
+    <property dbms="postgresql" name="now" value="now()"/>
 
     <preConditions>
         <runningAs username="fifa19"/>

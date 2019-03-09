@@ -20,7 +20,7 @@ internal data class ClubEntity(
 
 	companion object
 	{
-		fun fromDto(dto: ClubDto): ClubEntity =
-				ClubEntity(name = dto.name, logoUrl = dto.logoUrl)
+		fun fromDto(dto: ClubDto?): ClubEntity =
+				ClubEntity(name = dto?.name ?: "", logoUrl = dto?.logoUrl ?: "")
 	}
 }

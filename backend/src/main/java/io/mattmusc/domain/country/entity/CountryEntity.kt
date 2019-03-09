@@ -11,7 +11,7 @@ import javax.persistence.Table
 internal data class CountryEntity(
 		@Id @Column(name = "country_id") val id: Long? = null,
 		val name: String,
-		val flagUrl: String
+		val flagUrl: String? = ""
 )
 {
 	constructor() : this(name = "", flagUrl = "")

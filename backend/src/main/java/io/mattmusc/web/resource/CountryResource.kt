@@ -11,7 +11,7 @@ import io.mattmusc.domain.country.api.dto.CountryDto
 @JsonDeserialize(using = CountryDeserializer::class)
 data class CountryResource(
 		val name: String,
-		val flagUrl: String)
+		val flagUrl: String?)
 {
 	companion object
 	{

@@ -7,4 +7,5 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
     <include file="src/main/changelogs/0.0.1/000.xml"/>
     <include file="src/main/changelogs/0.0.1/001.xml"/>
+    <include file="src/main/changelogs/0.0.1/002.xml"/>
 </databaseChangeLog>

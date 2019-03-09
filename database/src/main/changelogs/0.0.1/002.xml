@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <property dbms="oracle" name="autoIncrement" value="false"/>
+    <property dbms="mysql" name="autoIncrement" value="true"/>
+
+    <property dbms="oracle" name="now" value="sysdate"/>
+    <property dbms="mysql" name="now" value="now()"/>
+    <property dbms="postgresql" name="now" value="now()"/>
+
+    <preConditions>
+        <runningAs username="fifa19"/>
+    </preConditions>
+
+    <changeSet id="000-all-alter_table-player" author="mattmusc">
+        <preConditions>
+            <tableExists tableName="player"/>
+        </preConditions>
+        <addNotNullConstraint tableName="player" columnName="name" columnDataType="nvarchar(128)"/>
+        <addNotNullConstraint tableName="player" columnName="age" columnDataType="int"/>
+        <addNotNullConstraint tableName="player" columnName="id_country" columnDataType="bigint"/>
+        <rollback>
+            <dropNotNullConstraint tableName="play" columnName="name"/>
+            <dropNotNullConstraint tableName="play" columnName="age"/>
+            <dropNotNullConstraint tableName="play" columnName="id_country"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
