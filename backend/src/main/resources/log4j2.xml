@@ -17,7 +17,7 @@
         <Logger name="org.springframework.web.servlet.DispatcherServlet" level="debug" additivity="false">
             <AppenderRef ref="Console-Appender"/>
         </Logger>
-        <Logger name="org.springframework.data" level="info" additivity="false">
+        <Logger name="org.springframework.data" level="warn" additivity="false">
             <AppenderRef ref="Console-Appender"/>
         </Logger>
 

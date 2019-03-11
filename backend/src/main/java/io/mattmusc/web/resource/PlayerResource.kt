@@ -8,12 +8,13 @@ import org.springframework.hateoas.ResourceSupport
 data class PlayerResource
 @JsonCreator
 constructor(
-		@JsonProperty("id") val _id: String,
+		@JsonProperty("id") val _id: Long,
 		@JsonProperty("name") val name: String,
 		@JsonProperty("age") val age: Int,
+		@JsonProperty("photoUrl") val photoUrl: String? = "",
 		@JsonProperty("clubName") val clubName: String? = "",
 		@JsonProperty("clubLogoUrl") val clubLogoUrl: String? = "",
-		@JsonProperty("nationality") val nationality: String,
+		@JsonProperty("country") val nationality: String,
 		@JsonProperty("flagUrl") val flagUrl: String? = "",
 		@JsonProperty("overall") val overall: Int?,
 		@JsonProperty("marketValue") val marketValue: Double?,
@@ -26,9 +27,10 @@ constructor(
 	{
 		fun fromDto(dto: PlayerDto): PlayerResource =
 				PlayerResource(
-						_id = dto.id.toString(),
+						_id = dto.id,
 						name = dto.name,
 						age = dto.age,
+						photoUrl = dto.photoUrl,
 						clubName = dto.club?.name,
 						clubLogoUrl = dto.club?.logoUrl,
 						nationality = dto.country.name,
