@@ -3,10 +3,10 @@
 Just an API to expose some data taken from Fifa 19 dataset from Kaggle.
 
 ## TODO
-[] Try to remove Spring boot.
-[] Try Oracle DB
-[] Add Spring security (JWT?)
-[] Add user model.
+- [ ] Try to remove Spring boot.
+- [ ] Try Oracle DB
+- [ ] Add Spring security (JWT?)
+- [ ] Add user model.
 
 ## Tech stack
 
