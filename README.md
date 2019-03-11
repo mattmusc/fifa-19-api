@@ -23,7 +23,7 @@ Liquibase migrations are run by the database module `pom.xml`.
 ## How to run
 - Create a database with the `docker-compose.yml` file in /database module folder.
 - You can customize inside the yml file exposed port, username, password etc.
-- You can use the ansible `developer_environment.yml` to create a virtual machine with Tomcat 9.
+- Run it as a Spring boot app. (war is tbd)
 
 Author
 ---
